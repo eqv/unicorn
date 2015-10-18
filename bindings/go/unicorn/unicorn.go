@@ -111,3 +111,7 @@ func (u *uc) MemMapProt(addr, size uint64, prot int) error {
 func (u *uc) MemMap(addr, size uint64) error {
 	return u.MemMapProt(addr, size, PROT_ALL)
 }
+
+func (u *uc) MemUnmap(addr, size uint64) error {
+	return errReturn(C.uc_mem_unmap(u.handle, C.uint64_t(addr), C.size_t(size)))
+}

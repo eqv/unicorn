@@ -1,5 +1,5 @@
 
-CFLAGS += -I../../include
+CFLAGS += -I../../include -g
 
 ifeq (MING,$(findstring MING,$(shell uname -s)))
 LDFLAGS += ../../unicorn.lib $(shell pkg-config --libs glib-2.0) -lpthread -lm
@@ -37,6 +37,7 @@ TESTS += mips_branch_likely_issue
 TESTS += hook_extrainvoke
 TESTS += sysenter_hook_x86
 TESTS += emu_clear_errors
+TESTS += exec_fuzz
 
 all: $(TESTS)
 
